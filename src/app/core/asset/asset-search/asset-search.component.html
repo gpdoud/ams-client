@@ -1,0 +1,30 @@
+<menu-comp></menu-comp>
+<div class="form-horizontal" style="margin: 20px;"> 
+
+	<div><span style="color: blue; font-size: 22px; text-align: center;" class="PageTitle">Asset Search</span></div>
+	<div style="text-align: center;">
+	<div  style="display: inline-block; width: 50%; padding: 30px 30px 0 0;border: 1px solid silver;">  
+
+	<div class='form-group'>
+	<label class='col-md-3 control-label' for="assetsearch-licenseplate">License Plate</label>
+	<div class='col-md-9'>
+	<input class='form-control' name='License Plate' type= 'text' id='assetsearch-licenseplate' 
+		[(ngModel)]='licenseplate' placeholder="License Plate">
+	</div>
+	</div>
+
+	<div class='form-group'>
+	<label class='col-md-3 control-label' for="assetsearch-location">Location</label>
+	<div class='col-md-9'>
+		<select [(ngModel)]="location" name='Location Id' class='form-control'>
+			<option *ngFor="let location of locations" [ngValue]="location">{{location.Name}}</option>
+		</select>
+	</div>
+	</div>
+
+	<div class="text-center">
+		<button class="btn btn-danger" (click)="search()">Search</button>
+	</div>
+	</div>
+	</div>
+	</div>

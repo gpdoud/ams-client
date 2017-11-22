@@ -1,0 +1,21 @@
+<menu-comp></menu-comp>
+<div class="MainContent form-horizontal">
+
+	<div style="text-align: center;">
+		<span class="PageTitle"><h2>Location Detail</h2></span>
+		<span class="CreateNew"><a routerLink="/users/add">Add New</a></span></div>&nbsp;
+
+	<table class="table" *ngIf="location">
+		<tr><th>Name</th><td>{{location.Name}}</td></tr>
+		<tr><th>Department</th><td>{{location.Department}}</td></tr>
+		<tr><th>Address</th><td>{{location.Address}}</td></tr>
+		<tr><th>City</th><td>{{location.City}}</td></tr>
+		<tr><th>State</th><td>{{location.State}}</td></tr>
+		<tr><th>Phone</th><td>{{location.Phone}}</td></tr>
+	</table>
+		
+	<div class="text-center">
+		<button  class="btn btn-danger" (click)="remove()">Delete</button>
+	</div>
+
+</div>

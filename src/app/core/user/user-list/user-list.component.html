@@ -1,0 +1,31 @@
+<menu-comp></menu-comp>
+<div class="MainContent form-horizontal firstDivAddEditList">
+
+	<div class="pageTitle">
+		<span><h1>Users</h1></span>
+		<button type="button" class="btn btn-primary" routerLink="/users/add">Add New</button></div>
+		<!-- *ngIf looks at variable "users" in component; if null, table remains unfilled, once table is populated, it fills -->
+	<table class="table" *ngIf="users">
+		<tr>
+			<th>Name</th>
+			<th>User Name</th>
+			<th>Email</th>
+			<th>Admin Level</th>
+			<th>Active?</th>
+			<th>Actions</th>
+		</tr>
+			<!-- for each loop-->
+		<tr *ngFor="let user of users">
+			<td>{{user.FirstName}} {{user.LastName}}</td>
+			<td>{{user.Username}}</td>
+			<td>{{user.Email}} </td>
+			<td>{{user.AdminLevel}} </td>
+			<td *ngIf="user.IsActive">Yes</td>
+			<td *ngIf="!user.IsActive">&nbsp;</td>
+			<td>
+				<!-- <a routerLink="/users/detail/{{user.Id}}">Detail</a> -->
+				<a routerLink="/users/edit/{{user.Id}}">Detail/Edit</a>
+			</td>
+		</tr>
+	</table>
+</div>

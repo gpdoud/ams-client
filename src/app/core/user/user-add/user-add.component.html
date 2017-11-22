@@ -1,0 +1,67 @@
+<menu-comp></menu-comp>
+<div class="MainContent form-horizontal firstDivAddEditList">
+
+	<div class="pageTitle"><div><span><h2>Add User</h2></span></div>
+
+	<form class="addEditForm" *ngIf="user">
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="user-firstname">First Name</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='FirstName' type='text' id='user-firstname' 
+				[(ngModel)]='user.FirstName' placeholder="First Name">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="user-lastname">Last Name</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='LastName' type='text' id='user-lastname' 
+				[(ngModel)]='user.LastName'  placeholder="Last Name">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="user-username">User Name</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='UserName' type='text' id='user-username' 
+				[(ngModel)]='user.Username'  placeholder="Username" required>
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="user-password">Password</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Password' type='Password' id='user-password' 
+				[(ngModel)]='user.Password' placeholder="Password" required="">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="user-email">Email</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Email' type='text' id='user-email' 
+				[(ngModel)]='user.Email' placeholder="Email">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="user-adminlevel">AdminLevel</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='AdminLevel' type='text' id='user-adminlevel' 
+				[(ngModel)]='user.AdminLevel' placeholder="AdminLevel">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<button (click)='add()' id='add' type="button" class='col-md-11 col-md-offset-1 btn btn-primary'>Add</button>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-10 col-md-offset-1 text-left'>{{message}}&nbsp;</label>
+	</div>
+
+	</form>
+
+	</div>
+</div>

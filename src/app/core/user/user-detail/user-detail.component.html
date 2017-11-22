@@ -1,0 +1,20 @@
+<menu-comp></menu-comp>
+<div class="MainContent form-horizontal">
+
+	<div style="text-align: center;">
+		<span class="PageTitle"><h2>User Detail</h2></span>
+		<span class="CreateNew"><a routerLink="/users/add">Add New</a></span></div>&nbsp;
+
+	<table class="table" *ngIf="user">
+		<tr><th>Name</th><td>{{user.FirstName}} {{user.LastName}}</td></tr>
+		<tr><th>Username</th><td>{{user.Username}}</td></tr>
+		<tr><th>Email</th><td>{{user.Email}}</td></tr>
+		<tr><th>Admin Level</th><td>{{user.AdminLevel}}</td></tr>
+		<tr><th>Active?</th><td>{{user.IsActive}}</td></tr>
+	</table>
+		
+	<div class="text-center">
+		<button  class="btn btn-danger" (click)="remove()">Delete</button>
+	</div>
+
+</div>

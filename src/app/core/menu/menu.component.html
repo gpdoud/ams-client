@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+  	<!-- will replicate this tag and everything inside of it, each time for each item inside the array Menu[], like a for each loop in-->
+  	<li *ngFor= "let menu of menus"><a routerLink ="{{menu.href}}">{{menu.display}}</a></li>
+  </ul>
+  <span style="color: white;" *ngIf="loggedInUser">{{loggedInUser}}</span>
+</nav>

@@ -1,0 +1,67 @@
+<menu-comp></menu-comp>
+<div class="MainContent form-horizontal firstDivAddEditList">
+
+	<div class="pageTitle"><div><span><h2>Add Location</h2></span></div>
+
+	<form class="addEditForm" *ngIf="location">
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="location-name">Name</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Name' type='text' id='location-name' 
+				[(ngModel)]='location.Name' placeholder="Name">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="location-department">Department</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Department' type='text' id='location-department' 
+				[(ngModel)]='location.Department'  placeholder="Department">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="location-address">Address</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Address' type='Address' id='location-address' 
+				[(ngModel)]='location.Address' placeholder="Address" required="">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="location-city">City</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='City' type='text' id='location-city' 
+				[(ngModel)]='location.City' placeholder="City">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="location-state">State</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='State' type='text' id='location-state' 
+				[(ngModel)]='location.State' placeholder="State">
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="location-phone">Phone</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Phone' type='text' id='location-phone' 
+				[(ngModel)]='location.Phone' placeholder="Phone" required>
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<button (click)='add()' id='add' type="button" class='col-md-11 col-md-offset-1 btn btn-primary'>Add</button>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-10 col-md-offset-1 text-left'>{{message}}&nbsp;</label>
+	</div>
+
+	</form>
+
+	</div>
+</div>

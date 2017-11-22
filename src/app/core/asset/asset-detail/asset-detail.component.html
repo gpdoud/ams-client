@@ -1,0 +1,186 @@
+<menu-comp></menu-comp>
+<div class="MainContent form-horizontal" style="text-align: center;">
+    <div>
+    	<span class="pageTitle"><h2>Asset Detail</h2></span>
+		<!-- <button id='add' class='btn btn-primary' routerLink="/assets/add">Add New</button> -->
+	</div>
+
+	<div class="firstDivAddEditList"> 
+
+	<form *ngIf="asset" class="addEditForm">  
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-name">Name</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Name' type= 'text' id='asset-name' 
+			[(ngModel)]='asset.Name' placeholder="Name">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-location-name">Location</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Location' type= 'text' id='asset-location-name' 
+			[(ngModel)]='asset.LocationId' placeholder="Location">
+			<!-- <select [(ngModel)]='asset.LocationId' class='form-control' name='Location' id='asset-location-name'>
+				<option *ngFor="let location of locations" [ngValue]="location.Id">{{location.Name}}</option>
+			</select> -->
+		</div>
+	</div>
+
+	<div class='form-group'>
+    	<label class='col-md-3 control-label' for="asset-vendor">Vendor</label>
+    	<div class='col-md-9'>
+   			<input class='form-control' name='Vendor' type= 'text' id='asset-vendor' 
+   			[(ngModel)]='asset.Vendor' placeholder="Vendor">
+   		</div>
+   </div>
+
+   <div class='form-group'>
+    	<label class='col-md-3 control-label' for="asset-PurchaseDate">Purchase Date</label>
+    	<div class='col-md-9'>
+   			<input class='form-control' name='PurchaseDate' type= 'text' id='asset-PurchaseDate' 
+   			[(ngModel)]='asset.PurchaseDate' placeholder="Purchase Date">
+   		</div>
+   </div>
+
+   <div class='form-group'>
+    	<label class='col-md-3 control-label' for="asset-PurchaseOrderNumber">Purchase Order #</label>
+    	<div class='col-md-9'>
+   			<input class='form-control' name='PurchaseOrderNumber' type= 'text' id='asset-PurchaseOrderNumber' 
+   			[(ngModel)]='asset.PurchaseOrderNumber' placeholder="Purchase Order Number">
+   		</div>
+   </div>
+
+   <div class='form-group'>
+    	<label class='col-md-3 control-label' for="asset-AssetCost">Asset Cost</label>
+    	<div class='col-md-9'>
+   			<input class='form-control' name='AssetCost' type= 'text' id='asset-AssetCost' 
+   			[(ngModel)]='asset.AssetCost' placeholder="Asset Cost">
+   		</div>
+   </div>
+
+   <div class='form-group'>
+    	<label class='col-md-3 control-label' for="asset-OutForRepairDate">Out For Repair Date</label>
+    	<div class='col-md-9'>
+   			<input class='form-control' name='OutForRepairDate' type= 'text' id='asset-OutForRepairDate' [(ngModel)]='asset.OutForRepairDate' placeholder="Out For Repair Date">
+   		</div>
+   </div>
+
+   <div class='form-group'>
+    	<label class='col-md-3 control-label' for="asset-BackFromRepairDate">Back From Repair Date</label>
+    	<div class='col-md-9'>
+   			<input class='form-control' name='BackFromRepairDate' type= 'text' id='asset-BackFromRepairDate' [(ngModel)]='asset.BackFromRepairDate' placeholder="Back From Repair Date">
+   		</div>
+   </div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-RetiredDate">Retired Date</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='RetiredDate' type= 'text' id='asset-RetiredDate' 
+			[(ngModel)]='asset.RetiredDate' placeholder="Retired Date">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-SurplusDate">Surplus Date</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='SurplusDate' type= 'text' id='asset-SurplusDate' 
+			[(ngModel)]='asset.SurplusDate' placeholder="Surplus Date">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-SalesProceeds">Sales Proceeds</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='SalesProceeds' type= 'text' id='asset-SalesProceeds' 
+			[(ngModel)]='asset.SalesProceeds' placeholder="Sales Proceeds">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-photopath">PhotoPath</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='PhotoPath' type= 'text' id='asset-photopath' 
+			[(ngModel)]='asset.PhotoPath' placeholder="PhotoPath">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-type">Type</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Type' type= 'text' id='asset-type' 
+			[(ngModel)]='asset.Type' placeholder="Type">
+		</div>
+	</div>
+
+	<div *ngIf="asset.Vehicle">
+		<div class='form-group'>
+			<label class='col-md-3  control-label' for="vehicle-License">License</label>
+			<div class='col-md-9'>
+				<input class='form-control' name='License' type='text' id='Vehicle-License' 
+				[(ngModel)]='asset.Vehicle.License' placeholder="License">
+			</div>
+		</div>
+
+		<div class='form-group' >
+			<label class='col-md-3  control-label' for="vehicle-vin">VIN</label>
+			<div class='col-md-9'>
+				<input class='form-control' name='VIN' type='text' id='Vehicle-vin' 
+				[(ngModel)]='asset.Vehicle.VIN' placeholder="VIN">
+			</div>
+		</div>
+
+		<div class='form-group' >
+			<label class='col-md-3  control-label' for="vehicle-make">Make</label>
+			<div class='col-md-9'>
+				<input class='form-control' name='Make' type='text' id='Vehicle-make' 
+				[(ngModel)]='asset.Vehicle.Make' placeholder="Make">
+			</div>
+		</div>
+
+		<div class='form-group' >
+			<label class='col-md-3  control-label' for="vehicle-model">Model</label>
+			<div class='col-md-9'>
+				<input class='form-control' name='Model' type='text' id='Vehicle-model' 
+				[(ngModel)]='asset.Vehicle.Model' placeholder="Model">
+			</div>
+		</div>		
+
+		<div class='form-group' >
+			<label class='col-md-3  control-label' for="vehicle-HasLights">Are there lights on the roof?</label>
+			<div class='col-md-9'>
+				<input class='form-control' name='HasLights' type='text' id='Vehicle-HasLights' 
+				[(ngModel)]='asset.Vehicle.HasLights' placeholder="HasLights">
+			</div>
+		</div>	
+
+	</div>
+
+	<div *ngIf="asset.Type == 'Equipment'">
+		<p> *ngIf="asset.Type == 'Equipment'" works!</p>
+	</div>
+	<div *ngIf="asset.Type == 'Furniture'">
+		<p> *ngIf="asset.Type == 'Furniture'" works!</p>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-3 control-label' for="asset-AssignedTo">Assigned To</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='AssignedTo' type= 'text' id='asset-AssignedTo' 
+			[(ngModel)]='asset.AssignedTo' placeholder="Assigned To">
+		</div>
+	</div>
+
+	<div class="text-center">
+		<button (click)='update()' id='update' class='col-md-5 col-md-offset-1 btn btn-warning'>Update</button> 
+		<button (click)="remove()" class="col-md-5 col-md-offset-1 btn btn-danger">Delete</button>
+	</div>
+
+	<div class='form-group'>
+		<label class='col-md-10 col-md-offset-1 text-left'>{{message}}&nbsp;</label>
+	</div>
+	</form>
+
+	</div>
+</div>

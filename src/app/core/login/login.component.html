@@ -1,0 +1,35 @@
+<!-- LOGIN FORM -->
+<h1 align="center"> Welcome to the Asset Management System</h1>
+<div align="center" id="loginDiv" style="width:28%; border: 1px solid silver; margin: 0 auto; padding: 10px 0;" class="form-horizontal">
+	<h3>Login</h3>
+	&nbsp;
+	<!-- form tag allows you to press enter to activate button -->
+	<form style="">
+
+	<div class="form-group" style="margin: auto 0 auto;">
+		<!-- <label class='col-md-2 control-label' for="user-user-username">User Name</label> -->
+		<div>
+			<input style="display: block; width: 300px; margin: auto 0 auto;" class='form-control' name="UserName" type="text" id="user-user-username"
+			[(ngModel)]='username' placeholder="User Name">
+		</div>
+	</div>
+
+	<div class="form-group" style="margin: 0 auto;">
+		<!-- <label class='col-md-2 control-label' for="user-password">Password</label> -->
+		<div>
+			<input style="display: block;  width: 300px; left-margin: 30px;" class='form-control' name="Password" type="Password" id="user-password"
+			[(ngModel)]='password' placeholder="Password">
+		</div>
+	</div>
+&nbsp;
+<div class='form-group'>
+	<!-- upon click, calls login() method inside component -->
+	<button style="width: 80%;" (click)='login()' id='login' class='btn btn-primary'>Login</button>
+</div>
+
+<div align="center" class='form-group' style="margin: 0 auto;">
+	<label class='col-md-10 col-md-offset-1 text-left'>{{message}}&nbsp;</label>
+</div>
+
+</form>	
+</div>
