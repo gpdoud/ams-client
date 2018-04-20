@@ -7,13 +7,11 @@ import { Asset } from '../../shared/models/asset';
 import { Location } from '../../shared/models/location';
 import { Vehicle } from '../models/Vehicle';
 
-const urlBase = 'http://localhost:54154/';
-const mvcCtrl = 'Assets/';
-const url: string = urlBase + mvcCtrl;
-
+import { StartupService } from '../services/startup.service';
 
 @Injectable()
 export class AssetService {
+  
 
   licenseplate: string;
   location: Location;
@@ -34,28 +32,31 @@ testVehicle:Vehicle[]=[
 testAsset: Asset[];
 
   
-  constructor(private http: Http) {}
+  constructor(private http: Http,
+              private StartupSvc: StartupService) {}
   
+    
+    url = this.StartupSvc.settings['serverURL'] + 'Assets/';
  
     search(): Promise<Asset[]> {
         let locId = (typeof this.location === "undefined") ? "" : this.location.Id;
         let parms = "?licenseplate=" + this.licenseplate + "&location=" + locId;
         console.log (parms);
-        return this.http.get(url+'Search' + parms)
+        return this.http.get(this.url+'Search' + parms)
         .toPromise()
         .then(resp => resp.json() as Asset[])
         .catch(this.handleError);
     }
 
     list(): Promise<Asset[]> {
-         return this.http.get(url+'List')
+         return this.http.get(this.url+'List')
            .toPromise()
            .then(resp => resp.json() as Asset[])
            .catch(this.handleError);
        }
 
     get(id): Promise<Asset> {
-         return this.http.get(url+'Get/'+id)
+         return this.http.get(this.url+'Get/'+id)
            .toPromise()
            .then(resp => resp.json() as Asset)
            .catch(this.handleError);
@@ -64,21 +65,21 @@ testAsset: Asset[];
     add(asset:Asset): Promise<any> {
         console.log("service add()");
         console.log(asset);
-        return this.http.post(url+'Add', asset)
+        return this.http.post(this.url+'Add', asset)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
       }
 
     change(asset:Asset): Promise<any> {
-        return this.http.post(url+'Change', asset)
+        return this.http.post(this.url+'Change', asset)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
       }
 
      remove(asset:Asset): Promise<any> {
-        return this.http.post(url+'Remove', asset)
+        return this.http.post(this.url+'Remove', asset)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);

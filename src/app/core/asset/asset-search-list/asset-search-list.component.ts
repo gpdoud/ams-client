@@ -13,12 +13,11 @@ export class AssetSearchListComponent implements OnInit {
 
 assets: Asset[];
 
-
 //getting the list of assets that were searched for
 getSearch(): void {
 	this.AssetSvc.search()
-	.then(resp => this.assets = resp)
-
+  .then(resp => this.assets = resp)
+  
 }
 
   constructor(private AssetSvc: AssetService) { }
