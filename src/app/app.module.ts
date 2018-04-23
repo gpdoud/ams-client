@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
 
 import { AppComponent } from '@app/app.component';
 import { Headers, Http } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
   //you can kind of think of the module as the applicaiton, or the project in VS.net
   //the module needs to know about all the parts of the application
@@ -21,11 +22,13 @@ import { AboutComponent } from './core/about/about.component';
 import { HelpComponent } from './core/help/help.component';
 import { LoginComponent } from './core/login/login.component';
 import { MenuComponent } from './core/menu/menu.component';
-
+// services
 import { SystemService } from './shared/services/system.service';
 import { AssetService } from './shared/services/asset.service';
 import { UserService } from './shared/services/user.service';
 import { LocationService } from './shared/services/location.service';
+// this service is called and used before the application can proceed
+import { StartupService } from './shared/services/startup.service';
 
 import {AssetListComponent} from './core/asset/asset-list/asset-list.component';
 import {AssetDetailComponent} from './core/asset/asset-detail/asset-detail.component';
@@ -44,10 +47,13 @@ import { LocationEditComponent } from './core/location/location-edit/location-ed
 import { LocationAddComponent } from './core/location/location-add/location-add.component';
 
 
+export function startupServiceFactory(StartUpSvc: StartupService): Function {
+    return () => StartUpSvc.getSettings();
+}
+
 @NgModule({
   declarations: [
-
-    AppComponent,  //values
+    AppComponent,
     HomeComponent, 
     AboutComponent,
     MenuComponent,
@@ -73,13 +79,23 @@ import { LocationAddComponent } from './core/location/location-add/location-add.
     // CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [
+    StartupService,
+    {
+        // Provider for APP_INITIALIZER
+        provide: APP_INITIALIZER,
+        useFactory: startupServiceFactory,
+        deps: [StartupService],
+        multi: true
+    },
       UserService,
       SystemService,
       AssetService,
-      LocationService],
+      LocationService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

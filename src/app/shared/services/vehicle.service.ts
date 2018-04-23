@@ -6,46 +6,46 @@ import 'rxjs/add/operator/map';
 
 import { Vehicle } from '../models/Vehicle';
 import { Asset } from '../models/asset';
-
-const urlBase = 'http://localhost:54154/';
-const mvcCtrl = 'Vehicles/';
-const url: string = urlBase + mvcCtrl;
+import { StartupService } from '../services/startup.service';
 
 @Injectable()
 export class VehicleService {
 
- constructor(private http: Http) { }
+	url = this.StartupSvc.settings['serverURL'] + 'Vehicles/';
+
+	 constructor(private http: Http,
+				 private StartupSvc: StartupService) { }
 
 	list(): Promise<Vehicle[]> {
-		return this.http.get(url+'List')
+		return this.http.get(this.url+'List')
 			.toPromise()
 			.then(resp => resp.json() as Vehicle[])
 			.catch(this.handleError);	
 	}
 
 	get(id): Promise<Vehicle> {
-		return this.http.get(url+'Get/'+id)
+		return this.http.get(this.url+'Get/'+id)
 			.toPromise()
 			.then(resp => resp.json() as Vehicle)
 			.catch(this.handleError);	
 	}
 
 	add(vendor: Vehicle): Promise<any> {
-		return this.http.post(url+'Add', vendor)
+		return this.http.post(this.url+'Add', vendor)
 			.toPromise()
 			.then(resp => resp.json() || {})
 			.catch(this.handleError);
 	}
 
 	change(vendor: Vehicle): Promise<any> {
-		return this.http.post(url+'Change', vendor)
+		return this.http.post(this.url+'Change', vendor)
 			.toPromise()
 			.then(resp => resp.json() || {})
 			.catch(this.handleError);
 	}
 
 	remove(vendor: Vehicle): Promise<any> {
-		return this.http.post(url+'Remove', vendor)
+		return this.http.post(this.url+'Remove', vendor)
 			.toPromise()
 			.then(resp => resp.json() || {})
 			.catch(this.handleError);	
